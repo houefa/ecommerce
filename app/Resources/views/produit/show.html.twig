@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Produit</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ produit.id }}</td>
+            </tr>
+            <tr>
+                <th>Poids</th>
+                <td>{{ produit.poids }}</td>
+            </tr>
+            <tr>
+                <th>Qte</th>
+                <td>{{ produit.qte }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
+                <td>{{ produit.libelle }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ produit.description }}</td>
+            </tr>
+            <tr>
+                <th>Disponible</th>
+                <td>{% if produit.disponible %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Avenir</th>
+                <td>{% if produit.avenir %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Creele</th>
+                <td>{% if produit.creele %}{{ produit.creele|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Modifiele</th>
+                <td>{% if produit.modifiele %}{{ produit.modifiele|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('produit_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('produit_edit', { 'id': produit.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

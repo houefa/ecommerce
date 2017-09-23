@@ -1,0 +1,101 @@
+{% extends 'layout/layout.html.twig' %}
+
+{% block body %}
+    <!-- products-breadcrumb -->
+    <div class="products-breadcrumb">
+        <div class="container">
+            <ul>
+                <li><i class="fa fa-home" aria-hidden="true"></i><a href="{{ path('produits') }}">Accueil</a><span>|</span></li>
+                <li><a href="{{ path('panier') }}">Mon panier</a><span>|</span></li>
+                <li>Mon panier</li>
+            </ul>
+        </div>
+    </div>
+<!-- //products-breadcrumb -->
+<!-- banner -->
+    <div class="banner">
+        <div class="w3l_banner_nav_left">
+            <nav class="navbar nav_bottom">
+             <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header nav_2">
+                  <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+               </div> 
+               <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                    <ul class="nav navbar-nav nav_1">
+                        {% render(controller('EcommerceBundle:Categorie:menu')) %}
+                    </ul>
+                 </div><!-- /.navbar-collapse -->
+            </nav>
+        </div>
+        <div class="w3l_banner_nav_right">
+            
+        <!-- about -->
+        <div class="privacy about">
+            <h3><span>Livraison</span></h3>
+            
+          <div class="checkout-right">
+                
+            </div>
+            <div class="checkout-left"> 
+                <div class="col-md-4 checkout-left-basket">
+                   <form action="{{ path('validation') }}" method="POST" >
+                        <section class="creditly-wrapper wthree, w3_agileits_wrapper">
+                            <div class="information-wrapper">
+                            <h4>Adresse de livraison</h4>
+                            
+                            {% for adresse in utilisateur.adresses %}
+                                <input type="radio" name="livraison" value="{{ adresse.id }}" {% if loop.index0 == 0 %}  checked="" {% endif %} >
+                                <label class="radio">
+                                    
+                                     {{ adresse.nom }}
+                                     {{ adresse.prenom }}
+                                     {{ adresse.cp }}
+                                     {{ adresse.quartier.nom }}
+                                     {# {{ adresse.quartier.commune.nom }}
+                                     {{ adresse.quartier.commune.ville.nom }} #}
+                                     {#{{ adresse.quartier.commune.ville.departement2.nom }} 
+                                     {{ adresse.complement }} #}
+
+                                    <a href="{{ path('livraisonAdresseSupprimer', {'id' : adresse.id }) }}"><i class="icon-trash"></i></a>
+                                </label>
+                            {% endfor %}
+
+                             
+                            
+                            <br />
+                            
+                            
+                            <button class="btn btn-primary">Valider mon adresse de livraison</button>
+                            </div>
+                                    </section> 
+                        </form>
+                </div>
+                <div class="col-md-8 address_form_agile">
+                    <h4>Ajouter une nouvelle adresse</h4>
+                    <form action="{{ path('livraison') }}" method="POST" class="creditly-card-form agileinfo_form">
+                      {# {{ form_label(form, 'label', { 'attr': {'class': 'control-label'} }) }}
+                      {{ form_widget(form, { 'attr': {'class': 'form-control'} }) }} #}
+
+                        {{ form_widget(form) }}                                     
+                        
+                        <br />
+                        <button class="btn btn-primary" type="submit">Ajouter</button>
+                    </form>
+<!-- //about -->
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>  
+    <div class="clearfix"></div>
+{% endblock %}
+

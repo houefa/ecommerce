@@ -1,0 +1,418 @@
+<?php
+
+namespace EcommerceBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Adresse
+ *
+ * @ORM\Table(name="adresse")
+ * @ORM\Entity(repositoryClass="EcommerceBundle\Repository\AdresseRepository")
+ */
+class Adresse
+{   
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255, nullable=true)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=255, nullable=true)
+     */
+    private $prenom;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Fournisseur", inversedBy="adresses")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $fournisseur;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="UtilisateursBundle\Entity\Utilisateurs", inversedBy="adresses")
+     * @ORM\JoinColumn(nullable=true)
+     */
+
+    private $utilisateur;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Livreur", inversedBy="adresses")
+    * @ORM\JoinColumn(nullable=true)
+    */
+
+    private $livreur;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="EcommerceBundle\Entity\Quartier", inversedBy="adresses")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $quartier;
+
+    
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="complement", type="text", nullable=true)
+     */
+    private $complement;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cp", type="string", length=255, nullable=true)
+     */
+    private $cp;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telephone", type="string", length=255, nullable=true)
+     */
+    private $telephone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telephone2", type="string", length=255, nullable=true)
+     */
+    private $telephone2;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="creele", type="datetime")
+     */
+    private $creele;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="modifiele", type="datetime")
+     */
+    private $modifiele;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    
+    /**
+     * Set complement
+     *
+     * @param string $complement
+     *
+     * @return Adresse
+     */
+    public function setComplement($complement)
+    {
+        $this->complement = $complement;
+
+        return $this;
+    }
+
+    /**
+     * Get complement
+     *
+     * @return string
+     */
+    public function getComplement()
+    {
+        return $this->complement;
+    }
+
+    /**
+     * Set fournisseur
+     *
+     * @param \EcommerceBundle\Entity\Fournisseur $fournisseur
+     *
+     * @return Adresse
+     */
+    public function setFournisseur(\EcommerceBundle\Entity\Fournisseur $fournisseur = null)
+    {
+        $this->fournisseur = $fournisseur;
+
+        return $this;
+    }
+
+    /**
+     * Get fournisseur
+     *
+     * @return \EcommerceBundle\Entity\Fournisseur
+     */
+    public function getFournisseur()
+    {
+        return $this->fournisseur;
+    }
+
+    /**
+     * Set utilisateur
+     *
+     * @param \UtilisateursBundle\Entity\Utilisateurs $utilisateur
+     *
+     * @return Adresse
+     */
+    public function setUtilisateur(\UtilisateursBundle\Entity\Utilisateurs $utilisateur = null)
+    {
+        $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    /**
+     * Get utilisateur
+     *
+     * @return \UtilisateursBundle\Entity\Utilisateurs
+     */
+    public function getUtilisateur()
+    {
+        return $this->utilisateur;
+    }
+
+    /**
+     * Set livreur
+     *
+     * @param \EcommerceBundle\Entity\Livreur $livreur
+     *
+     * @return Adresse
+     */
+    public function setLivreur(\EcommerceBundle\Entity\Livreur $livreur = null)
+    {
+        $this->livreur = $livreur;
+
+        return $this;
+    }
+
+    /**
+     * Get livreur
+     *
+     * @return \EcommerceBundle\Entity\Livreur
+     */
+    public function getLivreur()
+    {
+        return $this->livreur;
+    }
+
+    /**
+     * Set creele
+     *
+     * @param \DateTime $creele
+     *
+     * @return Adresse
+     */
+    public function setCreele($creele)
+    {
+        $this->creele = $creele;
+
+        return $this;
+    }
+
+    /**
+     * Get creele
+     *
+     * @return \DateTime
+     */
+    public function getCreele()
+    {
+        return $this->creele;
+    }
+
+    /**
+     * Set modifiele
+     *
+     * @param \DateTime $modifiele
+     *
+     * @return Adresse
+     */
+    public function setModifiele($modifiele)
+    {
+        $this->modifiele = $modifiele;
+
+        return $this;
+    }
+
+    /**
+     * Get modifiele
+     *
+     * @return \DateTime
+     */
+    public function getModifiele()
+    {
+        return $this->modifiele;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->creele = new \DateTime();
+        $this->modifiele = new \DateTime();
+        
+    }
+    
+
+    /**
+     * Set quartier
+     *
+     * @param \EcommerceBundle\Entity\Quartier $quartier
+     *
+     * @return Adresse
+     */
+    public function setQuartier(\EcommerceBundle\Entity\Quartier $quartier)
+    {
+        $this->quartier = $quartier;
+
+        return $this;
+    }
+
+    /**
+     * Get quartier
+     *
+     * @return \EcommerceBundle\Entity\Quartier
+     */
+    public function getQuartier()
+    {
+        return $this->quartier;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Adresse
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set prenom
+     *
+     * @param string $prenom
+     *
+     * @return Adresse
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    /**
+     * Get prenom
+     *
+     * @return string
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * Set cp
+     *
+     * @param string $cp
+     *
+     * @return Adresse
+     */
+    public function setCp($cp)
+    {
+        $this->cp = $cp;
+
+        return $this;
+    }
+
+    /**
+     * Get cp
+     *
+     * @return string
+     */
+    public function getCp()
+    {
+        return $this->cp;
+    }
+
+    /**
+     * Set telephone
+     *
+     * @param string $telephone
+     *
+     * @return Adresse
+     */
+    public function setTelephone($telephone)
+    {
+        $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    /**
+     * Get telephone
+     *
+     * @return string
+     */
+    public function getTelephone()
+    {
+        return $this->telephone;
+    }
+
+    /**
+     * Set telephone2
+     *
+     * @param string $telephone2
+     *
+     * @return Adresse
+     */
+    public function setTelephone2($telephone2)
+    {
+        $this->telephone2 = $telephone2;
+
+        return $this;
+    }
+
+    /**
+     * Get telephone2
+     *
+     * @return string
+     */
+    public function getTelephone2()
+    {
+        return $this->telephone2;
+    }
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block titre %}Ecommerce Fruits et Légumes - by NAFES SARL {% endblock %}</title>
+        <meta name="keywords" content="{% block motsCles %}{% endblock %}" />
+        <meta name="description" content="{% block description %}{% endblock %}" />
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/bootstrap-responsive.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}" />
+        {# <link rel="stylesheet" href="{{ asset('bundles/pages/ckeditor/font-awesome.css') }}" /> #}
+
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        
+    </head>
+    <body>
+        <div class="navbar navbar-inverse">
+            <div class="navbar-inner">
+                <div class="container">
+                    <button class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse" type="button">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="brand" href="index.php">Administration</a>
+                    <div class="nav-collapse collapse">
+                        {% render(controller('EcommerceBundle:Produits:recherche')) %}
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- {#% block body %#} -->
+        {# % include "EcommerceBundle:Default:include.html.twig" % #}
+        {#% endblo -->#}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    {% include '::modulesUsed/navigationAdmin.html.twig' %}
+                </div>
+                <div class="col-md-9">
+                    {% block body %} 
+                    {% endblock %}
+                   {#  <h2>Factures du jour</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Référence</th>
+                                <th>Client</th>
+                                <th>Date</th>
+                                <th>Prix TTC</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="#">1</a></td>
+                                <td><a href="#">M Catelain</a></td>
+                                <td>20/02/2017</td>
+                                <td>333 FTTC</td>
+                                <td>
+                                    <a href="#"><i class="icon-edit"></i></a>
+                                    <a href="#"><i class="icon-remove"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="#">2</a></td>
+                                <td><a href="#">M Catelain</a></td>
+                                <td>20/02/2017</td>
+                                <td>333 FTTC</td>
+                                <td>
+                                    <a href="#"><i class="icon-edit"></i></a>
+                                    <a href="#"><i class="icon-remove"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table> #}
+                </div>
+            </div>
+        </div>
+        <hr />
+        <footer id="footer" class="vspace20">
+            <div class="container">
+                {# <div class="row">
+                    <div class="span4 offset1">
+                        <h4>Informations</h4>
+                        <ul class="nav nav-stacked">
+                            
+                        </ul>
+                    </div> 
+
+                    <div class="span4">
+                        <h4>Notre entrepôt</h4>
+                        <p><i class="icon-map-marker"></i>&nbsp;{{ adresse }}</p>
+                    </div>
+
+                    <div class="span2">
+                        <h4>Nous contacter</h4>
+                        <p><i class="icon-phone"></i>&nbsp;Tel 1: {{ telephone1 }}</p>
+                        <p><i class="icon-print"></i>&nbsp;Tel 2: {{ telephone2 }}</p>
+                    </div>
+                </div> #}
+
+                <div class="row">
+                    <div class="span4">
+                        <p>&copy; Copyright 2017 - MaProvision</p>
+                    </div>
+                </div>
+            </div>
+        </footer>   
+        <script src="{{ asset('js/jquery.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.js') }}"></script>
+        <script src="{{ asset('bundles/pages/ckeditor/ckeditor.js') }}"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

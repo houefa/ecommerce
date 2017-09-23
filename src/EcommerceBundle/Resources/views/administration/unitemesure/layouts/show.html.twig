@@ -1,0 +1,32 @@
+{% extends 'layout/layoutAdmin.html.twig' %}
+
+{% block body %}
+	<h1>Unité de mesure</h1>
+	{# <table class="record_properties">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ page.id }}</td>
+			</tr>
+			<tr>
+				<th>Titre</th>
+				<td>{{ page.titre }}</td>
+			</tr>
+			<tr>
+				<th>Contenu</th>
+				<td>{{ page.contenu }}</td>
+			</tr>
+		</tbody>
+	</table> #}
+	<ul class="record_actions">
+		<li>
+			<a href="{{ path('adminUnitemesure_index') }}">
+				Retour
+			<a>
+		</li>
+		<li>
+			{{form(delete_form)}}
+		</li>
+	</ul>
+
+{% endblock %}

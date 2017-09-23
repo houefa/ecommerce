@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Categories list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>Creele</th>
+                <th>Modifiele</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categorie in categories %}
+            <tr>
+                <td><a href="{{ path('categorieAdmin_show', { 'id': categorie.id }) }}">{{ categorie.id }}</a></td>
+                <td>{{ categorie.libelle }}</td>
+                <td>{% if categorie.creele %}{{ categorie.creele|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if categorie.modifiele %}{{ categorie.modifiele|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('categorieAdmin_show', { 'id': categorie.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('categorieAdmin_edit', { 'id': categorie.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('categorieAdmin_new') }}">Create a new categorie</a>
+        </li>
+    </ul>
+{% endblock %}

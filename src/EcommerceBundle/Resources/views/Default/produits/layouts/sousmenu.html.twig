@@ -1,0 +1,154 @@
+{% extends 'layout/layout.html.twig' %}
+
+    
+{% block body %}
+
+  <div class="container">
+    <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-7">
+                {% render(controller('EcommerceBundle:Produits:recherche')) %}
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+     {% block slide %}
+        
+      <div class="row overflownone">
+              <div class="col-md-3 information nopaddingleft nopaddingright hidden-sm hidden-xs">
+                 <h4>Nos Produits</h4>
+                 
+                 <ul class="information_menu">
+                    {% render(controller('EcommerceBundle:Categorie:menu')) %}
+                 </ul>
+              </div>
+      <div class="col-md-7 nopaddingleft nopaddingright">
+         <div class="slideshow">
+            
+           {% for categorie in categories %}
+                <div class="overlay-id{{ loop.index }} overlay-item">
+               <h3>Choisir une catégorie</h3>
+                  <ul>
+                    {{ render(controller('EcommerceBundle:Categorie:sousmenu', { 'id':categorie.id })) }}
+                    
+                  </ul>
+            </div>
+            {% endfor %}
+
+            
+            <div id="carousel-example-generic" class="carousel slide carousel-fade" data-ride="carousel">
+               <!-- Indicators -->
+               <ol class="carousel-indicators">
+                  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+               </ol>
+               <!-- Wrapper for slides -->
+               <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                     <div class="carousel-caption">
+                        <h3>First slide label</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                     </div>
+                  </div>
+                  <div class="item">
+                     <div class="carousel-caption">
+                        <h3>First slide label</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                     </div>
+                  </div>
+                  <div class="item">
+                     <div class="carousel-caption">
+                        <h3>First slide label</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                     </div>
+                  </div>
+               </div>
+               <!-- Controls -->
+               <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+               <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+               <span class="sr-only">Previous</span>
+               </a>
+               <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+               <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+               <span class="sr-only">Next</span>
+               </a>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="row visible-xs visible-sm ">
+      <div class="col-md-12 mobile-menu-bg">
+         <ul class="information_menu_mobile">
+            <li class="active"><a href="#"><i class="fa fa-calendar-plus-o"></i> <span class="hidden-xs">Lorem ipsum</span></a></li>
+            <li><a href="#"><i class="fa fa-commenting-o"></i> <span class="hidden-xs">Praesent posuere</span></a></li>
+            <li><a href="#"><i class="fa fa-medkit"></i> <span class="hidden-xs">Phasellus imperdiet</span></a></li>
+            <li><a href="#"><i class="fa fa-heartbeat"></i> <span class="hidden-xs">In accumsan</span></a></li>
+         </ul>
+         <div class="clearfix"></div>
+      </div>
+    </div>
+    
+    {% endblock %} 
+    
+    
+    <hr>    
+
+        <div class="row">
+            
+
+                
+                
+                
+                 <div class="col-md-2"></div>
+                <div class="col-md-10">
+                  {% if produits|length !=0 %}
+                
+                {% for produit in produits %}
+                    <div class="col-sm-3 col-lg-3 col-md-3">
+                        <div class="thumbnail">
+                            <img src="{{ asset('uploads/' ~ produit.image.path) }}" alt="src="{{ asset('uploads/' ~ produit.image.name) }}"">
+                            <div class="caption">
+                                <h4 class="pull-right">{{ produit.prix }} <i>FCFA</i></h4>
+                                <h4><a href="#">{{ produit.libelle }}</a>
+                                </h4>
+                                <p>{{ produit.description }}</p>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">12 reviews</p>
+                                <p>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                {% endfor %}    
+                
+                <div class="pagination">
+                    
+                        {{ knp_pagination_render(produits) }}
+                    
+                </div>
+            {% else %}
+                Aucun produit. 
+            {% endif %}
+
+
+                        
+                    </div>
+
+                    
+                </div>
+
+            </div>
+            
+       
+    
+<?php include '../layout/footer.php'; ?>
+
+{% endblock %}

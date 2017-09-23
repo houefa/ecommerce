@@ -1,0 +1,19 @@
+{% extends 'layout/layoutAdmin.html.twig' %}
+
+{% block body %}
+	<h3>Unité de mesure - Ajout</h3>
+	<form action="{{ path('adminUnitemesure_new') }}" method="POST" {{ form_enctype(form) }}>
+	{{ form(form) }}
+	
+    <br />
+    {# <button class="btn btn-primary">Valider</button>  #}
+    </form>
+	<ul class="record_actions">
+		<li>
+			<a href="{{ path('adminUnitemesure_index') }}">
+				Retour
+			<a>
+		</li>
+	</ul>
+{% endblock %}
+           

@@ -1,0 +1,14 @@
+utilisateurAdmin_index:
+    path:     /
+    defaults: { _controller: "UtilisateursBundle:UtilisateursAdmin:index" }
+    methods:  GET
+
+utilisateurAdminAdresses:
+    path:     /{id}/adresses
+    defaults: { _controller: "UtilisateursBundle:UtilisateursAdmin:utilisateur" }
+    methods:  GET
+
+utilisateurAdminFactures:
+    path:     /{id}/factures
+    defaults: { _controller: "UtilisateursBundle:UtilisateursAdmin:utilisateur" }
+    methods:  GET

@@ -1,0 +1,4 @@
+CommandeAdmin_index:
+    path:     /
+    defaults: { _controller: "EcommerceBundle:CommandeAdmin:index" }
+    methods:  GET

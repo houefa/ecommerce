@@ -1,0 +1,147 @@
+{% extends 'layout/layout.html.twig' %}
+
+{% block body %}
+    {% set totalHT = 0 %}
+    {% set tva = 0 %}
+    
+
+	<!-- products-breadcrumb -->
+    <div class="products-breadcrumb">
+        <div class="container">
+            <ul>
+                <li><i class="fa fa-home" aria-hidden="true"></i><a href="{{ path('produits') }}">Accueil</a><span>|</span></li>
+                <li>Mon panier</li>
+            </ul>
+        </div>
+    </div>
+<!-- //products-breadcrumb -->
+<!-- banner -->
+    <div class="banner">
+        <div class="w3l_banner_nav_left">
+            <nav class="navbar nav_bottom">
+             <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header nav_2">
+                  <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+               </div> 
+               <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                    <ul class="nav navbar-nav nav_1">
+                        {% render(controller('EcommerceBundle:Categorie:menu')) %}
+                    </ul>
+                 </div><!-- /.navbar-collapse -->
+            </nav>
+        </div>
+        <div class="w3l_banner_nav_right">
+            <!-- about -->
+        <div class="privacy about">
+            <h3>Pa<span>nier</span></h3>
+            
+          <div class="checkout-right">
+                    <h4>Votre panier contient: <span>{{ produits|length }} Produits</span></h4>
+                <table class="timetable_sub">
+                    <thead>
+                        <tr>
+                            <th>Références</th> 
+                            <th>Produit</th>
+                            <th>Libellé</th>
+                            <th>Quantité</th>
+                            
+                        
+                            <th>Prix unitaire</th>
+                            <th>Total HT</th>
+                            <th>Supprimer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for produit in produits %}
+                            {% if loop.first %}
+                                <tr class="rem1">
+                                    <form action="{{ path('ajouter', {'id' : produit.id }) }}" method="get">
+                                     <td colspan="7">
+                                         
+                                        
+                                     </td>
+                                     </form>
+                                </tr>
+                            {% endif %}
+                                <tr class="rem1">
+                                    <form action="{{ path('ajouter', {'id' : produit.id }) }}" method="get">
+                                        <td class="invert">{{produit.id}}</td>
+                                        
+                                        <td class="invert-image" ><a href="{{ path('presentation',{'id':produit.id}) }}"><img src="{{ asset('uploads/' ~ produit.image.path) }}" alt=" " class="img-responsive" /></a></td>
+
+                                        <td>{{produit.libelle}}</td>
+                                        <td>
+                                            <select name="qte" class="span1" onChange="this.form.submit()">
+                                                {% for i in 1..20 %}
+                                                <option value="{{ i }}" {% if i == panier[produit.id] %} selected="selected" {% endif %} > {{ i }} </option>
+                                                {% endfor %}
+                                            </select>&nbsp;
+                                            
+                                            {# <a href="#"><i class="icon-refresh"></i></a> #}
+                                            
+                                        </td>
+                                        <td class="invert">
+                                            {{ produit.prix }} FCFA
+                                            
+                                        </td>
+                                        <td class="invert">{{ panier[produit.id] * produit.prix }} FCFA</td>
+                                        <td class="invert">
+                                            <div class="rem">
+                                                <a href="{{ path('supprimer', {'id' : produit.id }) }}"><img src="{{ asset('bundles/ecommerce/images/close_1.png') }}" alt=" " class="img-responsive" /></a>
+                                            </div>
+                                        </td>
+
+                                    </form>
+                                </tr>
+                                 
+                                {% set totalHT = totalHT + (panier[produit.id] * produit.prix) %}
+                            {% else %}
+                                    <tr class="rem1"><td colspan="7" ><center>Aucun produit dans votre panier.</center></td></tr>
+                           
+                                
+                        {% endfor %}
+                </tbody></table>
+            </div>
+            {% if produits|length != 0 %}
+                    <dl class="dl-horizontal pull-right">
+                        <dt>Total HT :</dt>
+                        <dd>{{ totalHT }} FCFA</dd>
+
+                        {% set tva = totalHT*18/100 %}
+                        
+                        <dt>TVA (18%):</dt>
+                        <dd>{{ tva }} FCFA</dd>
+        
+                        <dt>Total TTC:</dt>
+                        <dd>{{ totalHT+tva }} FCFA</dd>
+                    </dl>
+            <a href="{{ path('livraison') }}" class="btn btn-success pull-right">Valider mon panier</a>
+                {% endif %}
+                <a href="{{ path('produits') }}" class="btn btn-primary">Continuer mes achats</a>
+
+
+
+          
+
+        </div>
+<!-- //about -->
+        </div>
+        <div class="clearfix"></div>
+
+</div>
+
+    <script language="javascript" type="text/javascript">
+    function submitDetailsForm() {
+        alert($('#qte1').closest("form").html());
+        $('#qte1').closest("form").submit();
+        $( "#monform" ).submit();
+    }
+</script>
+{% endblock %}

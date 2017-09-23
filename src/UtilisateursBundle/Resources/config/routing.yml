@@ -1,0 +1,10 @@
+routingAdminUtilisateurs:
+    resource: "@UtilisateursBundle/Resources/config/routing/routingUtilisateurAdmin.yml"
+    prefix:   /admin/utilisateur/
+
+factures:
+    path:     /profile/factures
+    defaults: { _controller: UtilisateursBundle:Utilisateurs:factures }
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

@@ -1,0 +1,30 @@
+{% extends 'layout/layoutAdmin.html.twig' %}
+
+{% block body %}
+	<h1>Produits</h1>
+	{{ dump(produit) }}
+	{# <table class="record_properties">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ produit.id }}</td>
+			</tr>
+			<tr>
+				<th>Titre</th>
+				<td>{{ produit.titre }}</td>
+			</tr>
+			<tr>
+				<th>Contenu</th>
+				<td>{{ produit.contenu }}</td>
+			</tr>
+		</tbody>
+	</table> #}
+	<ul class="record_actions">
+		<li>
+			<a href="{{ path('produitAdmin_index') }}">
+				Retour
+			<a>
+		</li>
+	</ul>
+
+{% endblock %}

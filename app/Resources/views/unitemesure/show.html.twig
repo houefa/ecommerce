@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Unitemesure</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ unitemesure.id }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
+                <td>{{ unitemesure.libelle }}</td>
+            </tr>
+            <tr>
+                <th>Creele</th>
+                <td>{% if unitemesure.creele %}{{ unitemesure.creele|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Modifiele</th>
+                <td>{% if unitemesure.modifiele %}{{ unitemesure.modifiele|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('adminUnitemesure_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('adminUnitemesure_edit', { 'id': unitemesure.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

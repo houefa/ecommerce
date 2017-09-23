@@ -1,0 +1,3 @@
+validationCommande:
+    path:     /validationCommande/{id}
+    defaults: { _controller: EcommerceBundle:Commande:validationCommande }

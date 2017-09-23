@@ -1,0 +1,18 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: ecommerce
+    database_user: root
+    database_password: passer
+    mailer_transport: smtp
+    mailer_host: smtp.gmail.com
+    mailer_user: ahouefa3@gmail.com
+    mailer_password: paixjoieamour
+    secret: da300e2e691f4a713045aa3a4f7a24375f217e78
+twig:
+    globals:
+        telephone1: '(225)79 24 48 21'
+        telephone2: '(225)04 04 51 22'
+        adresse: 'Cocody Angré'
+        tva: 18/100

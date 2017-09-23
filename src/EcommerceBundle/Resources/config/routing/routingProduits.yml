@@ -1,0 +1,24 @@
+# sousmenu:
+#     path:     /
+#     defaults: { _controller: EcommerceBundle:Produits:sousmenu }
+
+produits:
+    path:     /produits
+    defaults: { _controller: EcommerceBundle:Produits:produits }
+
+presentation:
+    path:     /produit/{id}
+    defaults: { _controller: EcommerceBundle:Produits:presentation }
+
+ajout:
+    path:     /test/ajout
+    defaults: { _controller: EcommerceBundle:Test:testFormulaire }
+
+categorieProduits:
+    path:     /categorie/{categorie}
+    defaults: { _controller: EcommerceBundle:Produits:produits }
+
+rechercheProduits:
+    path:     /recherche
+    defaults: { _controller: EcommerceBundle:Produits:rechercheTraitement }
+

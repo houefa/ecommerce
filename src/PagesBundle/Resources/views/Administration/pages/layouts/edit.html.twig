@@ -1,0 +1,20 @@
+{% extends 'layout/layoutAdmin.html.twig' %}
+
+{% block body %}
+	<h1>Page Edit</h1>
+	
+	{{ form(edit_form) }}
+	<br />
+        
+	<ul class="record_actions">
+		<li>
+			<a href="{{ path('adminPages_index') }}">
+				Retour
+			<a>
+		</li>
+		<li>
+			{{form(delete_form)}}
+		</li>
+	</ul>
+{% endblock %}
+                        

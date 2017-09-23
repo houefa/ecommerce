@@ -1,0 +1,22 @@
+{% extends 'layout/layoutAdmin.html.twig' %}
+
+{% block body %}
+	<h1>Categorie Ajout</h1>
+	<form action="{{ path('categorieAdmin_new') }}" method="POST" {{ form_enctype(form) }}>
+	{{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+	
+    <br />
+    {# <button class="btn btn-primary">Valider</button>  #}
+    </form>
+	<ul class="record_actions">
+		<li>
+			<a href="{{ path('categorieAdmin_index') }}">
+				Retour
+			<a>
+		</li>
+	</ul>
+{% endblock %}
+           

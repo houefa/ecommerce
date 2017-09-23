@@ -1,0 +1,10 @@
+{% for cat in cats %}
+	<li class="menu-item"><a href="{{path('categorieProduits',{'categorie':cat.id})}}"><i class="fa fa-calendar-plus-o"></i><b>{{cat.libelle}}</b></a>
+		<ul class="">
+			{{ render(controller('EcommerceBundle:Categorie:sousmenu', { 'id':cat.id })) }}
+		</ul>
+	</li>
+		
+
+{% endfor %}
+

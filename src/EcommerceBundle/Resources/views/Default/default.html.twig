@@ -1,0 +1,20 @@
+<html>
+	<body>
+		{# {% for produit in produits %}
+			{{ produit.nom }}
+			{{ produit.description }}
+			{{ produit.disponible }}
+			{{ produit.categorie }}
+			{{ produit.image }}
+			<br/><br/>
+
+		{% endfor %} #}
+
+		Formulaire
+		<form action="{{ path('ajout') }}" method="POST">
+			{{ form(form) }}
+
+		</form>
+	</body>
+</html>
+		

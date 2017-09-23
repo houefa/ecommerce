@@ -1,0 +1,24 @@
+produitAdmin_index:
+    path:     /
+    defaults: { _controller: "EcommerceBundle:ProduitAdmin:index" }
+    methods:  GET
+
+produitAdmin_show:
+    path:     /{id}/show
+    defaults: { _controller: "EcommerceBundle:ProduitAdmin:show" }
+    methods:  GET
+
+produitAdmin_new:
+    path:     /new
+    defaults: { _controller: "EcommerceBundle:ProduitAdmin:new" }
+    methods:  [GET, POST]
+
+produitAdmin_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EcommerceBundle:ProduitAdmin:edit" }
+    methods:  [GET, POST]
+
+produitAdmin_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EcommerceBundle:ProduitAdmin:delete" }
+    methods:  DELETE

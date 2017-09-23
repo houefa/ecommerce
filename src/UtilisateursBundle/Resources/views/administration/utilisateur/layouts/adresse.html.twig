@@ -1,0 +1,15 @@
+{% extends 'layout/layoutAdmin.html.twig' %}
+
+{% block body %}
+	<h1>Utilisateur Adresses</h1>
+	{% for adresse in utilisateur.adresses %}
+		<div class="span12"> 
+			<div class="span4">
+				<h4>Adresse {{ loop.index }} : </h4>
+				{{ adresse.quartier.nom }}, {{ adresse.cp }} {{ adresse.quartier.commune.nom }} {{ adresse.quartier.commune.ville.nom }} -
+				<br />{{ adresse.prenom }} {{ adresse.nom }}  {{ adresse.complement }}
+				<br /><br />
+			</div>
+		</div>
+	{% endfor %}
+{% endblock %}

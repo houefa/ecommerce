@@ -1,0 +1,24 @@
+adminUnitemesure_index:
+    path:     /
+    defaults: { _controller: "EcommerceBundle:UnitemesureAdmin:index" }
+    methods:  GET
+
+adminUnitemesure_show:
+    path:     /{id}/show
+    defaults: { _controller: "EcommerceBundle:UnitemesureAdmin:show" }
+    methods:  GET
+
+adminUnitemesure_new:
+    path:     /new
+    defaults: { _controller: "EcommerceBundle:UnitemesureAdmin:new" }
+    methods:  [GET, POST]
+
+adminUnitemesure_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EcommerceBundle:UnitemesureAdmin:edit" }
+    methods:  [GET, POST]
+
+adminUnitemesure_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EcommerceBundle:UnitemesureAdmin:delete" }
+    methods:  DELETE

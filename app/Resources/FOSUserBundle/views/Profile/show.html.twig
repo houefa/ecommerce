@@ -1,0 +1,53 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+
+{# {% extends "@FOSUser/layout.html.twig" %} #}
+{% block body %}
+    <!-- products-breadcrumb -->
+    <div class="products-breadcrumb">
+        <div class="container">
+            <ul>
+                <li><i class="fa fa-home" aria-hidden="true"></i><a href="{{ path('produits') }}">Accueil</a><span>|</span></li>
+                <li>Mes informations</li>
+            </ul>
+        </div>
+    </div>
+<!-- //products-breadcrumb -->
+<!-- banner -->
+    <div class="banner">
+        <div class="w3l_banner_nav_left">
+            <nav class="navbar nav_bottom">
+             <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header nav_2">
+                  <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+               </div> 
+               <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                    <ul class="nav navbar-nav nav_1">
+                        {% render(controller('EcommerceBundle:Categorie:menu')) %}
+                    </ul>
+                 </div><!-- /.navbar-collapse -->
+            </nav>
+        </div>
+        <div class="w3l_banner_nav_right">
+            <div class="w3_login">
+            {# <h3>Mes informations</h3> #}
+            <div class="w3_login_module">
+                <div>
+                	{% block fos_user_content %}	
+					{% include "@FOSUser/Profile/show_content.html.twig" %}
+					{% endblock fos_user_content %}
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    </div>
+    <div class="clearfix"></div>
+{% endblock %}
+

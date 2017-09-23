@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Unitemesures list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>Creele</th>
+                <th>Modifiele</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for unitemesure in unitemesures %}
+            <tr>
+                <td><a href="{{ path('adminUnitemesure_show', { 'id': unitemesure.id }) }}">{{ unitemesure.id }}</a></td>
+                <td>{{ unitemesure.libelle }}</td>
+                <td>{% if unitemesure.creele %}{{ unitemesure.creele|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if unitemesure.modifiele %}{{ unitemesure.modifiele|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('adminUnitemesure_show', { 'id': unitemesure.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('adminUnitemesure_edit', { 'id': unitemesure.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('adminUnitemesure_new') }}">Create a new unitemesure</a>
+        </li>
+    </ul>
+{% endblock %}
